@@ -8,7 +8,19 @@
  -->
 # 基于CentOS的集成环境搭建过程(Jenkins + maven + git + junit + selenium + SonarQube)
 
-[TOC]
+* [基于CentOS的集成环境搭建过程(Jenkins   maven   git   junit   selenium   SonarQube)](#基于centos的集成环境搭建过程jenkins--maven--git--junit--selenium--sonarqube)
+    * [系统环境](#系统环境)
+        * [远程环境](#远程环境)
+        * [本地环境](#本地环境)
+    * [准备工作](#准备工作)
+    * [Java环境配置](#java环境配置)
+    * [Jenkins环境配置](#jenkins环境配置)
+    * [Maven配置](#maven配置)
+    * [git配置并上传代码](#git配置并上传代码)
+    * [Junit配置](#junit配置)
+    * [Selenium环境配置](#selenium环境配置)
+    * [SonarQube环境配置](#sonarqube环境配置)
+    * [参考文献](#参考文献)
 
 ## 系统环境
 
