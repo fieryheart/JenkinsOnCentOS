@@ -8,6 +8,8 @@
  -->
 # 基于CentOS的集成环境搭建过程(Jenkins + maven + git + junit + selenium + SonarQube)
 
+[TOC]
+
 ## 系统环境
 
 ### 远程环境
