@@ -33,13 +33,27 @@
 ### 本地环境
 + 操作系统：macOS High Sierra 10.13.6
 
+## 相关介绍
+
+### Jenkins
+
+### Maven
+
+### git
+
+### Juint
+
+### Selenium
+
+### SonarQube
+
 ## 准备工作
 + 创建专门用于存储安装包的目录, 目录路径为 **/home/developer/package**
 + 文中出现的 **{...}** 都是敏感信息
 
 ## Java环境配置
 + Java版本：jdk1.8
-![jdk版本](./image/jdk版本.jpg)
+![jdk_版本](./image/Java/jdk_版本.jpg)
 
 + 使用sftp协议上传至云服务器中，路径为 **/home/developer/package**
 ```
@@ -75,10 +89,53 @@ export PATH
 [root@{...} java]# java -verison
 ```
 输出以下内容即成功：
-![java_verison](./image/java_verison.jpg)
+![java_verison](./image/Java/java_verison.jpg)
 
 ## Jenkins环境配置
-(待添加)
+
++ Jenkins版本：jenkins-2.190.3-1.1（https://pkg.jenkins.io/redhat-stable/）
+![Jenkins_版本](./image/Jenkins/Jenkins_版本.jpg)
+
++ 使用sftp协议上传至云服务器中，路径为 **/home/developer/package**
+（命令同上）
+
++ 进入 **/home/developer/package** , 使用rpm命令安装jdk
+（命令同上）
+
++ 修改端口和Java执行路径（可选）
+```
+[root@{...} package]# vi /etc/sysconfig/jenkins
+# 修改 JENKINS_JAVA_CMD="/usr/java/jdk1.8.0_231/bin/java"
+# 修改 JENKINS_PORT="8080" (可选；如果端口冲突的话)
+```
+
++ 启动Jenkins
+```
+# 可执行命令: service jenkins start/stop/restart
+[root@{...} package]# service jenkins start
+Starting jenkins (via systemctl):                          [  OK  ]
+```
+
++ 进入云服务器控制台，配置防火墙，添加端口过滤规则
+![Jenkins_端口开放](./image/Jenkins/Jenkins_端口开放.jpg)
+
++ 浏览器请求 **{云服务器ip}:8080**
+![Jenkins_解锁](./image/Jenkins/Jenkins_解锁.jpg)
+ 
++ 复制云服务器中 ** /var/lib/jenkins/secrets/initialAdminPassword ** 的密码
+```
+[root@{...} package]# cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
++ 点击安装推荐的插件即可
+![Jenkins_初始插件安装](./image/Jenkins/Jenkins_初始插件安装.jpg)
+![Jenkins_初始插件列表](./image/Jenkins/Jenkins_初始插件列表.jpg)
+
++ 创建管理员用户，密码设置的复杂点，以后都要用此登录的
+![Jenkins_创建管理员用户](./image/Jenkins/Jenkins_创建管理员用户.jpg)
+
++ 进入界面后，即完成Jenkins的安装
+![Jenkins_主页](./image/Jenkins/Jenkins_主页.jpg)
 
 ## Maven配置
 (待添加)
@@ -96,4 +153,6 @@ export PATH
 (待添加)
 
 ## 参考文献
-(待添加)
+
++ Java环境配置
+https://www.jianshu.com/p/fe69558cb504
