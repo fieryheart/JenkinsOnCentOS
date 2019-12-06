@@ -138,7 +138,45 @@ Starting jenkins (via systemctl):                          [  OK  ]
 ![Jenkins_主页](./image/Jenkins/Jenkins_主页.jpg)
 
 ## Maven配置
-(待添加)
+
++ Maven版本：3.3.9（http://mirrors.sonic.net/apache/maven/maven-3）
+![Maven_版本](./image/Maven/Maven_版本.jpg)
+
++ 选择binaries压缩文件，用wget在云服务器上直接下载
+```
+[root@{...} package]# wget http://mirrors.sonic.net/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+# 可能会有点慢，可以采用sftp在本地下载再上传上去
+```
+
++ 使用tar命令将Maven解压至/usr/maven3中，并重命名
+```
+[root@{...} package]# mkdir /usr/maven3
+[root@{...} package]# tar xzf apache-maven-3.3.9-bin.tar.gz -C /usr/maven3/
+[root@{...} package]# mv /usr/maven3/apache-maven-3.3.9 /usr/maven3/maven-3.3.9
+```
+
++ 配置环境变量
+```
+[root@{...} package]# vi /etc/profile
+# 添加以下内容， 最好在内容的前一行加个备注，以便区别后面配置的环境变量
+MAVEN_HOME=/usr/maven3/maven-3.3.9
+PATH=$PATH:$MAVEN_HOME/bin
+export MAVEN_HOME
+export PATH
+```
+
++ 执行修改并验证
+```
+[root@{...} package]# source /etc/profile
+[root@{...} package]# mvn -v
+```
+输出以下内容即成功：
+![Maven_v](./image/Maven/Maven_v.jpg)
+
++ Jenkins配置Maven  
+进入 **Manage Jenkins -> Global Tool Configuration**，配置Maven环境
+![Maven_Jenkins_环境配置](./image/Maven/Maven_Jenkins_环境配置.jpg)
+可以通过执行 **echo $MAVEN_HOME** 查看MAVEN_HOME路径
 
 ## git配置并上传代码
 (待添加)
@@ -156,3 +194,9 @@ Starting jenkins (via systemctl):                          [  OK  ]
 
 + Java环境配置
 https://www.jianshu.com/p/fe69558cb504
+
++ Jenkins环境配置
+https://blog.csdn.net/Paulangsky/article/details/88226626
+
++ Maven环境配置
+https://yq.aliyun.com/articles/44689
