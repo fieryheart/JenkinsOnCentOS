@@ -51,7 +51,7 @@
 
 ## Java环境配置
 + Java版本：jdk1.8
-![jdk_版本](./image/Java/jdk_版本.jpg)
+![jdk_版本](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Java/jdk_版本.jpg)
 
 + 使用sftp协议上传至云服务器中，路径为 **/home/developer/package**
 ```
@@ -87,12 +87,12 @@ export PATH
 [root@{...} java]# java -verison
 ```
 输出以下内容即成功：
-![java_verison](./image/Java/java_verison.jpg)
+![java_verison](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Java/java_verison.jpg)
 
 ## Jenkins环境配置
 
 + Jenkins版本：jenkins-2.190.3-1.1（https://pkg.jenkins.io/redhat-stable/）
-![Jenkins_版本](./image/Jenkins/Jenkins_版本.jpg)
+![Jenkins_版本](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Jenkins/Jenkins_版本.jpg)
 
 + 使用sftp协议上传至云服务器中，路径为 **/home/developer/package**
 （命令同上）
@@ -115,10 +115,10 @@ Starting jenkins (via systemctl):                          [  OK  ]
 ```
 
 + 进入云服务器控制台，配置防火墙，添加端口过滤规则
-![Jenkins_端口开放](./image/Jenkins/Jenkins_端口开放.jpg)
+![Jenkins_端口开放](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Jenkins/Jenkins_端口开放.jpg)
 
 + 浏览器请求 **{云服务器ip}:8080**
-![Jenkins_解锁](./image/Jenkins/Jenkins_解锁.jpg)
+![Jenkins_解锁](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Jenkins/Jenkins_解锁.jpg)
  
 + 复制云服务器中 ** /var/lib/jenkins/secrets/initialAdminPassword ** 的密码
 ```
@@ -126,24 +126,24 @@ Starting jenkins (via systemctl):                          [  OK  ]
 ```
 
 + 点击安装推荐的插件即可
-![Jenkins_初始插件安装](./image/Jenkins/Jenkins_初始插件安装.jpg)
-![Jenkins_初始插件列表](./image/Jenkins/Jenkins_初始插件列表.jpg)
+![Jenkins_初始插件安装](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Jenkins/Jenkins_初始插件安装.jpg)
+![Jenkins_初始插件列表](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Jenkins/Jenkins_初始插件列表.jpg)
 
 + 创建管理员用户，密码设置的复杂点，以后都要用此登录的
-![Jenkins_创建管理员用户](./image/Jenkins/Jenkins_创建管理员用户.jpg)
+![Jenkins_创建管理员用户](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Jenkins/Jenkins_创建管理员用户.jpg)
 
 + 进入界面后，即完成Jenkins的安装
-![Jenkins_主页](./image/Jenkins/Jenkins_主页.jpg)
+![Jenkins_主页](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Jenkins/Jenkins_主页.jpg)
 
 + Jenkins配置JDK  
 进入 **Manage Jenkins -> Global Tool Configuration**，配置JDK环境
-![Jenkins_JDK_环境配置](./image/Jenkins/Jenkins_JDK_环境配置.jpg)
+![Jenkins_JDK_环境配置](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Jenkins/Jenkins_JDK_环境配置.jpg)
 可以通过执行 **echo $JAVA_HOME** 查看JDK路径
 
 ## Maven配置
 
 + Maven版本：3.3.9（http://mirrors.sonic.net/apache/maven/maven-3）
-![Maven_版本](./image/Maven/Maven_版本.jpg)
+![Maven_版本](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Maven/Maven_版本.jpg)
 
 + 选择binaries压缩文件，用wget在云服务器上直接下载
 ```
@@ -174,11 +174,11 @@ export PATH
 [root@{...} package]# mvn -v
 ```
 输出以下内容即成功：
-![Maven_v](./image/Maven/Maven_v.jpg)
+![Maven_v](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Maven/Maven_v.jpg)
 
 + Jenkins配置Maven  
 进入 **Manage Jenkins -> Global Tool Configuration**，配置Maven环境
-![Maven_Jenkins_环境配置](./image/Maven/Maven_Jenkins_环境配置.jpg)
+![Maven_Jenkins_环境配置](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Maven/Maven_Jenkins_环境配置.jpg)
 可以通过执行 **echo $MAVEN_HOME** 查看MAVEN_HOME路径
 
 ## git配置并上传代码
@@ -222,7 +222,7 @@ export PATH
 
 + Jenkins配置git  
 进入 **Manage Jenkins -> Global Tool Configuration**，配置git环境
-![Git_Jenkins_环境配置](./image/Git/Git_Jenkins_环境配置.jpg)
+![Git_Jenkins_环境配置](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/Git/Git_Jenkins_环境配置.jpg)
 可以通过执行 **which git** 查看git可执行文件
 
 ## 创建新任务，并使用JUint测试
@@ -232,16 +232,16 @@ export PATH
 
 + Jenkins安装Maven插件  
 在Jenkins中，**Manage Jenkins -> Manage Plugins** 
-![JUnit_安装Maven插件](./image/JUnit/JUnit_安装Maven插件.jpg)
+![JUnit_安装Maven插件](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/JUnit/JUnit_安装Maven插件.jpg)
 
 + 点击 创建一个新任务
-![JUnit_创建项目](./image/JUnit/JUnit_创建项目.jpg)
+![JUnit_创建项目](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/JUnit/JUnit_创建项目.jpg)
 
 + 在配置中，选择GitHub项目，以及**源码管理**中添加Git仓库管理
-![JUnit_项目添加Github库](./image/JUnit/JUnit_项目添加Github库.jpg)
+![JUnit_项目添加Github库](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/JUnit/JUnit_项目添加Github库.jpg)
 
 + 点击保存 -> 立即构建 -> 控制台输出查看信息
-![JUnit_test](./image/JUnit/JUnit_test.jpg)
+![JUnit_test](https://raw.githubusercontent.com/fieryheart/JenkinsOnCentOS/master/image/JUnit/JUnit_test.jpg)
 
 ## Selenium环境配置
 (待添加)
