@@ -265,3 +265,9 @@ https://www.jianshu.com/p/279ca6b455d7
 
 + Jenkins Maven插件安装
 http://istester.com/jenkins/189.html
+
++ 构建测试时出现的错误
+https://cloud.tencent.com/developer/ask/193505
+
++ SonarQube环境配置
+https://yq.aliyun.com/articles/175881
