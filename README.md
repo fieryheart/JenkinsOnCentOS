@@ -41,8 +41,6 @@
 
 ### git
 
-### Juint
-
 ### Selenium
 
 ### SonarQube
@@ -137,6 +135,11 @@ Starting jenkins (via systemctl):                          [  OK  ]
 + 进入界面后，即完成Jenkins的安装
 ![Jenkins_主页](./image/Jenkins/Jenkins_主页.jpg)
 
++ Jenkins配置JDK  
+进入 **Manage Jenkins -> Global Tool Configuration**，配置JDK环境
+![Jenkins_JDK_环境配置](./image/Jenkins/Jenkins_JDK_环境配置.jpg)
+可以通过执行 **echo $JAVA_HOME** 查看JDK路径
+
 ## Maven配置
 
 + Maven版本：3.3.9（http://mirrors.sonic.net/apache/maven/maven-3）
@@ -179,10 +182,66 @@ export PATH
 可以通过执行 **echo $MAVEN_HOME** 查看MAVEN_HOME路径
 
 ## git配置并上传代码
-(待添加)
 
-## Junit配置
-(待添加)
++ git版本：2.8.0
+
++ 使用wget直接在云服务器上下载
+```
+[root@{...} package]# wget https://www.kernel.org/pub/software/scm/git/git-2.8.0.tar.gz
+```
+
++ 在相关依赖
+```
+[root@{...} package]# yum -y install zlib-devel openssl-devel cpio expat-devel curl-devel
+```
+
++ 解压git
+```
+[root@{...} package]# tar -zxvf git-2.8.0.tar.gz
+```
+
++ 编译
+```
+[root@{...} package]# cd git-2.8.0
+[root@{...} git-2.8.0]# make configure
+# 出现 /bin/sh: autoconf: 未找到命令 错误
+[root@{...} git-2.8.0]# yum install autoconf
+[root@{...} git-2.8.0]# make configure
+[root@{...} git-2.8.0]# ./configure
+[root@{...} git-2.8.0]# make
+# 出现  make[1]: *** [perl.mak] 错误 2 
+# make: *** [perl/perl.mak] 错误 2 错误
+[root@{...} git-2.8.0]# yum install perl-ExtUtils-MakeMaker package
+[root@{...} git-2.8.0]# make
+[root@{...} git-2.8.0]# make install
+[root@{...} git-2.8.0]# echo "export PATH=$PATH:/usr/local/git/bin" >> /etc/bashrc
+[root@{...} git-2.8.0]# source /etc/bashrc
+[root@{...} git-2.8.0]# git --version
+```
+输出git版本号则配置成功
+
++ Jenkins配置git  
+进入 **Manage Jenkins -> Global Tool Configuration**，配置git环境
+![Git_Jenkins_环境配置](./image/Git/Git_Jenkins_环境配置.jpg)
+可以通过执行 **which git** 查看git可执行文件
+
+## 创建新任务，并使用JUint测试
+
++ 测试代码  
+将https://github.com/jenkins-docs/simple-java-maven-app中的代码fork到自己的仓库中。
+
++ Jenkins安装Maven插件  
+在Jenkins中，**Manage Jenkins -> Manage Plugins** 
+![JUnit_安装Maven插件](./image/JUnit/JUnit_安装Maven插件.jpg)
+
++ 点击 创建一个新任务
+![JUnit_创建项目](./image/JUnit/JUnit_创建项目.jpg)
+
++ 在配置中，选择GitHub项目，以及**源码管理**中添加Git仓库管理
+![JUnit_项目添加Github库](./image/JUnit/JUnit_项目添加Github库.jpg)
+
++ 点击保存 -> 立即构建 -> 控制台输出查看信息
+![JUnit_test](./image/JUnit/JUnit_test.jpg)
 
 ## Selenium环境配置
 (待添加)
@@ -200,3 +259,9 @@ https://blog.csdn.net/Paulangsky/article/details/88226626
 
 + Maven环境配置
 https://yq.aliyun.com/articles/44689
+
++ 阿里云ECS服务器安装git
+https://www.jianshu.com/p/279ca6b455d7
+
++ Jenkins Maven插件安装
+http://istester.com/jenkins/189.html
