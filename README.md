@@ -246,6 +246,10 @@ export PATH
 ## Selenium环境配置
 (待添加)
 
+## MySQL环境配置
+(待添加)
+https://yq.aliyun.com/articles/285398
+
 ## SonarQube环境配置
 (待添加)
 
